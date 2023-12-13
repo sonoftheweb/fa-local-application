@@ -1,0 +1,98 @@
+{
+  "tables": [
+    {
+      "name": "categories",
+      "columns": [
+        {
+          "name": "id",
+          "type": "number",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "length": 100
+        },
+        {
+          "name": "parent_id",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "products",
+      "columns": [
+        {
+          "name": "id",
+          "type": "number",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "length": 100
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "length": 1000
+        },
+        {
+          "name": "sku",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "products_fields",
+      "columns": [
+        {
+          "name": "field_id",
+          "type": "number",
+          "primaryKey": true
+        },
+        {
+          "name": "product_id",
+          "type": "number",
+          "foreignKey": true,
+          "references": "products",
+          "referencedColumn": "id"
+        },
+        {
+          "name": "field_name",
+          "type": "string",
+          "length": 100
+        },
+        {
+          "name": "field_type",
+          "type": "string",
+          "length": 50
+        },
+        {
+          "name": "field_value",
+          "type": "string",
+          "length": 1000
+        },
+        {
+          "name": "options",
+          "type": "string",
+          "length": 1000,
+          "nullable": true
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "created_at",
+          "type": "datetime"
+        },
+        {
+          "name": "updated_at",
+          "type": "datetime"
+        }
+      ]
+    }
+  ]
+}

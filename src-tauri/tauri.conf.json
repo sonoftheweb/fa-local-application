@@ -1,19 +1,52 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "bun run build",
+    "beforeBuildCommand": "bun run generate",
     "beforeDevCommand": "bun dev",
     "devPath": "http://localhost:3000",
-    "distDir": "../dist",
+    "distDir": "../.output/public",
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "ProPim",
+    "productName": "Future Accounting",
     "version": "0.1.0"
   },
   "tauri": {
+    "macOSPrivateApi": true,
     "allowlist": {
-      "all": false
+      "os": {
+        "all": true
+      },
+      "all": false,
+      "http": {
+        "all": true,
+        "request": true
+      },
+      "path": {
+        "all": true
+      },
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "clipboard": {
+        "all": false,
+        "writeText": true,
+        "readText": true
+      },
+      "dialog": {
+        "all": false,
+        "open": true
+      },
+      "window": {
+        "all": true
+      },
+      "fs": {
+        "createDir": true,
+        "readFile": true,
+        "writeFile": true,
+        "scope": ["$APPDATA/*"]
+      }
     },
     "bundle": {
       "active": true,
@@ -30,7 +63,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.pro-pim.app",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -56,11 +89,15 @@
     },
     "windows": [
       {
+        "decorations": false,
+        "transparent": true,
         "fullscreen": false,
-        "height": 600,
         "resizable": true,
-        "title": "ProPim",
-        "width": 800
+        "title": "Future Accounting",
+        "width": 1600,
+        "height": 900,
+        "minWidth": 1000,
+        "minHeight": 700
       }
     ]
   }
